@@ -1,0 +1,8 @@
+{
+  "modelName": "author",
+  "fields": [
+    ["java.lang.Integer", "authorGlobalId"],
+    ["java.lang.String", "authorName"],
+    ["java.lang.String", "profile"]
+  ]
+}
