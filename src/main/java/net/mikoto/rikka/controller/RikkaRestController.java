@@ -1,7 +1,5 @@
 package net.mikoto.rikka.controller;
 
-import net.mikoto.yukino.manager.YukinoModelManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -12,10 +10,4 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class RikkaRestController {
-    private final YukinoModelManager yukinoModelManager;
-
-    @Autowired
-    public RikkaRestController(YukinoModelManager yukinoModelManager) {
-        this.yukinoModelManager = yukinoModelManager;
-    }
 }
