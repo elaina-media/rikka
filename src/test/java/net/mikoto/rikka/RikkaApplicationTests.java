@@ -1,7 +1,8 @@
 package net.mikoto.rikka;
 
-import net.mikoto.rikka.model.IllustrationImage;
-import net.mikoto.rikka.service.IllustrationImageService;
+import net.mikoto.rikka.model.ArtworkImage;
+import net.mikoto.rikka.service.ArtworkImageService;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,19 +11,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 class RikkaApplicationTests {
 
     @Autowired
-    IllustrationImageService illustrationImageService;
+    ArtworkImageService artworkImageService;
+    Logger log = Logger.getLogger(RikkaApplicationTests.class);
 
     @Test
     void insert() {
-        IllustrationImage illustrationImage = new IllustrationImage();
-        illustrationImage.setArtworkGlobalId(123);
-        illustrationImage.setUrl("https://img-qn.51miz.com/preview/photo/00/01/51/26/P-1512602-6C1160D0O.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fw/720");
-        illustrationImageService.save(illustrationImage);
+        ArtworkImage[] artworkImages = artworkImageService.createIllustrationImages(123, new String[]{"URL1", "URL2", "URL3"});
+        log.info(artworkImages);
     }
 
     @Test
     void delete() {
-        illustrationImageService.removeById(1632227271552651266L);
+        artworkImageService.removeIllustrationImages(1081919501672554497L);
     }
 
 }

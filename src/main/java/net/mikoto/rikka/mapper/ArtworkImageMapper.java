@@ -1,11 +1,8 @@
 package net.mikoto.rikka.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import net.mikoto.rikka.model.IllustrationImage;
+import net.mikoto.rikka.model.ArtworkImage;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * @author mikoto
@@ -13,5 +10,5 @@ import java.util.List;
  * Create for rikka
  */
 @Mapper
-public interface IllustrationImageMapper extends BaseMapper<IllustrationImage> {
+public interface ArtworkImageMapper extends BaseMapper<ArtworkImage> {
 }

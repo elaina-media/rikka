@@ -10,7 +10,7 @@ import java.util.Date;
  * Create for rikka
  */
 @Data
-public class Illustration {
+public class Artwork {
     long artworkGlobalId;
     String title;
     String description;

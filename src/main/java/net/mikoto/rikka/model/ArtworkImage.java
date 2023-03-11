@@ -10,7 +10,7 @@ import lombok.Data;
  * Create for rikka
  */
 @Data
-public class IllustrationImage {
+public class ArtworkImage {
     @TableId(type = IdType.ASSIGN_ID)
     Long imageGlobalId;
     long artworkGlobalId;
