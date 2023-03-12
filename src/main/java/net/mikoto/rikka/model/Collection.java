@@ -16,6 +16,8 @@ public class Collection {
     String description;
     String coverUrl;
     long uploaderGlobalId;
+    long mediaGlobalId;
+    MediaType mediaType;
     int bookmarkCount;
     int likeCount;
     int viewCount;

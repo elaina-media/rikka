@@ -32,8 +32,10 @@ public class Artwork {
     boolean isCollected;
     long collectionGlobalId;
     int collectionOrder;
-    long nextArtworkGlobalId;
-    String nextArtworkTitle;
-    long previousArtworkGlobalId;
-    String previousArtworkTitle;
+    long nextMediaGlobalId;
+    MediaType nextMediaType;
+    String nextMediaTitle;
+    long previousMediaGlobalId;
+    MediaType previousMediaType;
+    String previousMediaTitle;
 }

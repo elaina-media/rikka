@@ -55,15 +55,15 @@ public class ArtworkImageServiceImpl
     /**
      * Put the single image after a chain
      *
-     * @param artworkId The artwork id
+     * @param previousArtworkId The artwork id
      * @param url       The url of the image
      * @return The image
      */
     @Override
-    public ArtworkImage createSingleIllustrationImage(long artworkId, String url) {
+    public ArtworkImage createSingleIllustrationImage(long previousArtworkId, String url) {
         ArtworkImage artworkImage = new ArtworkImage();
         artworkImage.setImageGlobalId(snowflakeIdGenerateUtil.getId());
-        artworkImage.setArtworkGlobalId(artworkId);
+        artworkImage.setArtworkGlobalId(previousArtworkId);
         artworkImage.setUrl(url);
         this.save(artworkImage);
         return artworkImage;
