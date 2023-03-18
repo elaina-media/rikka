@@ -6,6 +6,7 @@ import net.mikoto.rikka.model.Artwork;
 import net.mikoto.rikka.service.ArtworkImageService;
 import net.mikoto.rikka.service.ArtworkService;
 import net.mikoto.rikka.util.SnowflakeIdGenerateUtil;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,19 +51,27 @@ public class ArtworkServiceImpl
      * @param artwork The input artwork object
      * @return The result
      */
-    public boolean updateArtwork(Artwork artwork) {
+    public boolean updateArtwork(@NotNull Artwork artwork) {
         artwork.setUpdateTime(new Date());
         return this.updateById(artwork);
     }
 
     /**
-     * @param artwork The artwork which is need to remove
+     * Only remove artwork
+     *
+     * @param artworkId The artwork which is need to remove
      * @return The result
      */
-    public boolean removeSingleArtwork(Artwork artwork) {
-        return this.removeById(artwork);
+    public boolean removeSingleArtwork(long artworkId) {
+        return this.removeById(artworkId);
     }
 
+    /**
+     * Remove artwork and artwork image
+     *
+     * @param artworkId The artwork which is need to remove
+     * @return The result
+     */
     public boolean removeArtwork(long artworkId) {
         Artwork artwork = this.getById(artworkId);
         artworkImageService.removeIllustrationImages(artwork.getImageGlobalId());

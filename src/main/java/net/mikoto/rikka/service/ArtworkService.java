@@ -9,4 +9,26 @@ import net.mikoto.rikka.model.Artwork;
  * Create for rikka
  */
 public interface ArtworkService extends IService<Artwork> {
+    /**
+     * Create an artwork and save it to database
+     *
+     * @param artwork The input artwork object
+     * @return The result
+     */
+    Artwork createArtwork(Artwork artwork);
+
+    /**
+     * Update an artwork
+     *
+     * @param artwork The input artwork object
+     * @return The result
+     */
+    boolean updateArtwork(Artwork artwork);
+
+    /**
+     * @param artworkId The artwork which is need to remove
+     * @return The result
+     */
+    boolean removeSingleArtwork(long artworkId);
+    boolean removeArtwork(long artworkId);
 }
