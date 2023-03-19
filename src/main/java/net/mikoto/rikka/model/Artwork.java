@@ -1,5 +1,6 @@
 package net.mikoto.rikka.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
  */
 @Data
 public class Artwork {
+    @TableId()
     long artworkGlobalId;
     String title;
     String description;

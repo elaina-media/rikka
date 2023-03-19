@@ -13,9 +13,10 @@ public interface ArtworkService extends IService<Artwork> {
      * Create an artwork and save it to database
      *
      * @param artwork The input artwork object
+     * @param isSave
      * @return The result
      */
-    Artwork createArtwork(Artwork artwork);
+    Artwork createArtwork(Artwork artwork, boolean isSave);
 
     /**
      * Update an artwork

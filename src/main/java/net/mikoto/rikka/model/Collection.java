@@ -1,5 +1,6 @@
 package net.mikoto.rikka.model;
 
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.util.Date;
@@ -11,13 +12,14 @@ import java.util.Date;
  */
 @Data
 public class Collection {
+    @TableId
     long collectionGlobalId;
     String title;
     String description;
     String coverUrl;
     long uploaderGlobalId;
-    long mediaGlobalId;
-    MediaType mediaType;
+    long firstMediaGlobalId;
+    MediaType firstMediaType;
     int bookmarkCount;
     int likeCount;
     int viewCount;

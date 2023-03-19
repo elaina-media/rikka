@@ -79,7 +79,7 @@ public class ArtworkImageServiceImpl
     @Override
     public ArtworkImage[] createIllustrationImages(long artworkId, String[] urls) {
         arrayReverse(urls);
-        long nextImageId = 0;
+        long lastImageId = 0;
         List<ArtworkImage> artworkImages = new ArrayList<>();
         for (String url : urls) {
             ArtworkImage artworkImage = new ArtworkImage();
@@ -87,16 +87,18 @@ public class ArtworkImageServiceImpl
             artworkImage.setArtworkGlobalId(artworkId);
             artworkImage.setUrl(url);
 
-            if (nextImageId != 0) {
-                artworkImage.setNextImageGlobalId(nextImageId);
+            if (lastImageId != 0) {
+                artworkImage.setNextImageGlobalId(lastImageId);
             }
 
-            nextImageId = artworkImage.getImageGlobalId();
+            lastImageId = artworkImage.getImageGlobalId();
             artworkImages.add(artworkImage);
         }
 
         this.saveBatch(artworkImages);
-        return artworkImages.toArray(new ArtworkImage[0]);
+        ArtworkImage[] artworkImagesResult = artworkImages.toArray(new ArtworkImage[0]);
+        arrayReverse(artworkImagesResult);
+        return artworkImagesResult;
     }
 
     /**

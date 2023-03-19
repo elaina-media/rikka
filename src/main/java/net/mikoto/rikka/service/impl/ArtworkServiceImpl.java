@@ -35,13 +35,16 @@ public class ArtworkServiceImpl
      * Create an artwork and save it to database
      *
      * @param artwork The input artwork object
+     * @param isSave Is the artwork will be saved to database
      * @return The result
      */
-    public Artwork createArtwork(Artwork artwork) {
+    public Artwork createArtwork(Artwork artwork, boolean isSave) {
         artwork.setArtworkGlobalId(snowflakeIdGenerateUtil.getId());
         artwork.setCreateTime(new Date());
         artwork.setUpdateTime(new Date());
-        this.save(artwork);
+        if (isSave) {
+            this.save(artwork);
+        }
         return artwork;
     }
 

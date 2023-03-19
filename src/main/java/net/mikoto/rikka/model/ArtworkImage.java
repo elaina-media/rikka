@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class ArtworkImage {
     @TableId(type = IdType.ASSIGN_ID)
-    Long imageGlobalId;
+    long imageGlobalId;
     long artworkGlobalId;
     long nextImageGlobalId;
     String url;
