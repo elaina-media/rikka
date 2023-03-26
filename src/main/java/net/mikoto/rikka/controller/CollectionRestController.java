@@ -2,14 +2,13 @@ package net.mikoto.rikka.controller;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import net.mikoto.rikka.model.Collection;
 import net.mikoto.rikka.service.CollectionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -30,8 +29,24 @@ public class CollectionRestController {
             value = "/collection/createSingle",
             method = RequestMethod.POST
     )
-    public boolean createCollection(@RequestParam Map<String,Object> params) {
+    public JSONObject createCollection(@RequestParam Map<String, Object> params) {
         Collection collection = JSON.to(Collection.class, params);
-        return collectionService.save(collection);
+        collection.setCreateTime(new Date());
+        collection.setUpdateTime(new Date());
+
+        collectionService.save(collection);
+        QueryWrapper<Collection> collectionQueryWrapper = new QueryWrapper<>();
+        collectionQueryWrapper.eq("title", collection.getTitle()).select();
+        collection = collectionService.getOne(collectionQueryWrapper);
+        return JSONObject.from(collection);
+    }
+
+    @RequestMapping(
+            value = "/collection/initCollection",
+            method = RequestMethod.POST,
+            produces = "application/json;charset=UTF-8"
+    )
+    public void initCollection(@RequestBody JSONObject jsonParam) {
+        System.out.println(jsonParam);
     }
 }

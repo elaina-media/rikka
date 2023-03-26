@@ -7,6 +7,7 @@ import net.mikoto.rikka.model.ArtworkImage;
 import net.mikoto.rikka.service.ArtworkImageService;
 import net.mikoto.rikka.service.ArtworkService;
 import net.mikoto.rikka.service.CollectionService;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +44,7 @@ public class ArtworkRestController {
             value = "/artwork/create",
             method = RequestMethod.POST
     )
-    public JSONObject createArtwork(@RequestParam Map<String,Object> params) {
+    public JSONObject createArtwork(@RequestParam @NotNull Map<String,Object> params) {
         Object image = params.get("imageGlobalId");
         if (image instanceof String[]) {
             params.remove("imageGlobalId");
