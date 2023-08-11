@@ -18,7 +18,9 @@ public class Artwork {
     String description;
     String coverUrl;
     long uploaderGlobalId;
+    String uploaderName;
     long authorGlobalId;
+    String authorName;
     int pagesCount;
     /**
      * If the pagesCount is bigger than 1, the id will be the first page of the image
@@ -27,7 +29,7 @@ public class Artwork {
     int bookmarkCount;
     int likeCount;
     int viewCount;
-    int grading;
+    Grading grading;
     String tags;
     Date createTime;
     Date updateTime;
@@ -40,4 +42,8 @@ public class Artwork {
     long previousMediaGlobalId;
     MediaType previousMediaType;
     String previousMediaTitle;
+
+    public enum Grading {
+        ALL_AGES, R15, R18, R18G;
+    }
 }

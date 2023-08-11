@@ -10,7 +10,7 @@ import lombok.Data;
  * Create for rikka
  */
 @Data
-public class Author {
+public class  Author {
     @TableId(type = IdType.AUTO)
     long authorGlobalId;
     String name;

@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="https://www.thymeleaf.org">
+<head>
+
+    <!--/*@thymesVar id="title" type="java.lang.String"*/-->
+    <title th:text="${title}">Rikka-Unknown-Artwork</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.staticfile.org/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+</head>
+<body style="background: rgb(13, 17, 23); color: rgb(201, 209, 217);">
+<div class="container mt-3" th:object="${artwork}">
+    <!--/*@thymesVar id="image" type="java.lang.String"*/-->
+    <div class="raw" th:utext="${image}">
+    </div>
+
+    <!--/*@thymesVar id="artwork" type="net.mikoto.rikka.model.Artwork"*/-->
+    <div class="container">
+        <h1 th:utext="${artwork.getTitle()}">null</h1>
+        <p th:utext="${artwork.getDescription()}">null</p>
+        <p>
+            <span th:each="tag : ${artwork.getTags().split(';')}">
+                <a th:href="'/search?s=' + ${tag}" th:text="${tag}"></a>
+            </span>
+        </p>
+
+        <i class="fa-solid fa-bookmark"></i> <span th:utext="${artwork.getBookmarkCount()}">0</span>
+
+        <i class="fa-solid fa-heart"></i> <span th:utext="${artwork.getLikeCount()}">0</span>
+
+        <!--/*@thymesVar id="viewCount" type="java.lang.Integer"*/-->
+        <i class="fa-solid fa-eye"></i> <span th:utext="${artwork.getViewCount()}">0</span>
+
+        <a th:href="@{/author/${artwork.getAuthorGlobalId()}}"><span th:utext="${artwork.getAuthorName()}"></span></a>
+    </div>
+</div>
+
+<div class="container mt-3">
+    <small>
+        <a href="https://github.com/elaina-media"
+        ><i class="fa-brands fa-github"></i> Elaina-Media</a
+        >
+        2023
+    </small>
+</div>
+</body>
+</html>
