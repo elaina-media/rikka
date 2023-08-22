@@ -1,12 +1,13 @@
-create table uploader
+create table `0_sample_uploader`
 (
-    uploader_global_id bigint unsigned not null
+    uploader_global_id bigint unsigned auto_increment
         primary key,
-    name             varchar(32)     not null,
-    avatar           varchar(512)    null,
-    profile          varchar(512)    null,
-    constraint uploader_uk_uploader_global_id
-        unique (uploader_global_id),
-    constraint uploader_uk_name
-        unique (name)
+    name               varchar(24)  not null,
+    avatar             varchar(256) null,
+    profile            varchar(256) null,
+    constraint name
+        unique (name),
+    constraint uploader_global_id
+        unique (uploader_global_id)
 );
+

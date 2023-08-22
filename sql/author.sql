@@ -1,13 +1,13 @@
-create table author
+create table `0_sample_author`
 (
-    author_global_id bigint unsigned not null
+    author_global_id bigint unsigned auto_increment
         primary key,
-    name             varchar(32)     not null,
-    avatar           varchar(512)    null,
-    profile          varchar(512)    null,
-    constraint author_uk_author_global_id
+    name             varchar(50)  not null,
+    avatar           varchar(256) null,
+    profile          varchar(256) null,
+    constraint author_global_id
         unique (author_global_id),
-    constraint author_uk_name
+    constraint name
         unique (name)
 );
 
